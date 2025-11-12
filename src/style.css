@@ -1,0 +1,147 @@
+:root {
+    --background: hsl(233, 47%, 7%);
+    --card-background: hsl(244, 37%, 16%);
+
+    --accent: hsl(277, 64%, 61%);
+
+    --main-heading: hsl(0, 0%, 100%);
+    --paragraph: hsla(0, 0%, 100%, 0.75);
+    --subheading: hsla(0, 0%, 100%, 0.6);
+
+    /* TYPOGRAPHY */
+    --fs-heading: 1.75rem;
+    --fs-body: 0.9375rem;
+    --fs-stats-text: 0.8125rem;
+    --fs-stats-heading: 1.5rem;
+
+    @media (min-width: 42rem) {
+
+        --fs-heading: 2.25rem;
+    }
+
+    --fw-reg: 400;
+    --fw-bold: 700;
+
+    --ff-primary: 'Inter';
+    --ff-secondary: "Lexend Deca"
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+body {
+    background: var(--background);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    margin: 1rem;
+    max-width: 68.75rem;
+    border-radius: 10px;
+
+    background: var(--card-background);
+
+    overflow: hidden;
+
+    @media (min-width: 42rem) {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+}
+
+.card__detail {
+    flex: 1;
+    padding: 3.75rem;
+    display: grid;
+    /* gap: 2.5rem; */
+
+    @media (max-width: 42rem) {
+        padding: 3rem;
+        text-align: center;
+    }
+}
+
+.card__image {
+    position: relative;
+}
+
+.card__image::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background: hsl(from var(--accent) h s 40% /.6);
+    z-index: 1;
+}
+
+.card__heading {
+    font-size: var(--fs-heading);
+    font-family: var(--ff-primary);
+    font-weight: var(--fw-bold);
+    color: var(--main-heading);
+
+    >span {
+        color: var(--accent);
+    }
+}
+
+.card__description {
+    display: inline-block;
+    margin-block: 2rem 3rem;
+    max-width: 45ch;
+
+    color: var(--paragraph);
+
+    font-size: var(--fs-body);
+    font-family: var(--ff-primary);
+    line-height: 2;
+}
+
+.card__stats__item:not(:last-child) {
+    margin-block-end: 5rem;
+}
+
+@media(min-width: 42rem) {
+    .card__stats__item:not(:last-child) {
+        margin-block-end: 0;
+    }
+
+    .card__stats {
+        display: flex;
+        gap: 5rem;
+        align-items: center;
+    }
+}
+
+.stats__heading {
+    color: var(--subheading);
+
+    font-size: var(--fs-stats-heading);
+    font-family: var(--ff-primary);
+}
+
+.stat {
+    color: hsl(from var(--subheading) h s l /.25);
+
+    font-family: var(--ff-secondary);
+    font-size: var(--fs-stats-text);
+    font-weight: var(--fw-reg);
+    text-transform: uppercase;
+}
